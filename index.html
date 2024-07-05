@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج حجز</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 2em;
+        }
+        form {
+            background-color: #1f1f1f;
+            padding: 1em;
+            border-radius: 0.5em;
+        }
+        label, select, input, textarea {
+            display: block;
+            margin-bottom: 1em;
+            width: 100%;
+        }
+        select, input, textarea {
+            padding: 0.5em;
+            border: none;
+            border-radius: 0.25em;
+            font-size: 1em;
+        }
+        button {
+            background-color: #ff0000; /* لون أحمر */
+            color: #fff;
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #cc0000; /* تغيير لون عند التحويم */
+            transform: scale(1.05);
+        }
+    </style>
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const nationality = document.getElementById('nationality').value;
+            const phone = document.getElementById('phone').value;
+            const passport = document.getElementById('passport').value;
+            
+            if (name === "" || email === "" || nationality === "" || phone === "" || passport === "") {
+                alert("يرجى ملء جميع الحقول المطلوبة");
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <form action="process.php" method="post" onsubmit="return validateForm()">
+            <label for="name">الاسم</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="nationality">الجنسية</label>
+            <input type="text" id="nationality" name="nationality" required>
+            
+            <label for="phone">رقم الهاتف</label>
+            <input type="tel" id="phone" name="phone" required>
+            
+            <label for="passport">صورة جواز السفر</label>
+            <input type="file" id="passport" name="passport" accept="image/*" required>
+            
+            <button type="submit">احجز الآن</button>
+        </form>
+    </div>
+</body>
+</html>
